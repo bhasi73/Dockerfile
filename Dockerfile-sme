@@ -1,0 +1,7 @@
+FROM openjdk:11
+VOLUME /tmp
+ARG JAVA_OPTS
+ENV JAVA_OPTS=$JAVA_OPTS
+ADD allocationservice/target/allocationservice-0.0.1-SNAPSHOT.jar allocationservice.jar
+EXPOSE 9101
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar allocationservice.jar"]
